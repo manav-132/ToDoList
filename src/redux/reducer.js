@@ -1,42 +1,44 @@
 import { ADD_TASK, DELETE_TASK, EDIT_TASK, TOGGLE_TASK } from './action';
 
+// Initial state with tasks loaded from local storage if available
 const initialState = {
   tasks: JSON.parse(localStorage.getItem('tasks')) || [],
 };
 
+// Reducer function to handle state changes
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK:
-      const newTasks = [...state.tasks, action.payload];
-      localStorage.setItem('tasks', JSON.stringify(newTasks));
+      const updatedTasksAdd = [...state.tasks, action.payload];
+      localStorage.setItem('tasks', JSON.stringify(updatedTasksAdd)); // Save tasks to local storage
       return {
         ...state,
-        tasks: newTasks,
+        tasks: updatedTasksAdd,
       };
     case DELETE_TASK:
-      const remainingTasks = state.tasks.filter((task) => task.id !== action.payload);
-      localStorage.setItem('tasks', JSON.stringify(remainingTasks));
+      const updatedTasksDelete = state.tasks.filter(task => task.id !== action.payload);
+      localStorage.setItem('tasks', JSON.stringify(updatedTasksDelete)); // Save tasks to local storage
       return {
         ...state,
-        tasks: remainingTasks,
+        tasks: updatedTasksDelete,
       };
     case EDIT_TASK:
-      const editedTasks = state.tasks.map((task) =>
+      const updatedTasksEdit = state.tasks.map(task => 
         task.id === action.payload.taskId ? { ...task, ...action.payload.updatedTask } : task
       );
-      localStorage.setItem('tasks', JSON.stringify(editedTasks));
+      localStorage.setItem('tasks', JSON.stringify(updatedTasksEdit)); // Save tasks to local storage
       return {
         ...state,
-        tasks: editedTasks,
+        tasks: updatedTasksEdit,
       };
     case TOGGLE_TASK:
-      const toggledTasks = state.tasks.map((task) =>
+      const updatedTasksToggle = state.tasks.map(task => 
         task.id === action.payload ? { ...task, completed: !task.completed } : task
       );
-      localStorage.setItem('tasks', JSON.stringify(toggledTasks));
+      localStorage.setItem('tasks', JSON.stringify(updatedTasksToggle)); // Save tasks to local storage
       return {
         ...state,
-        tasks: toggledTasks,
+        tasks: updatedTasksToggle,
       };
     default:
       return state;
