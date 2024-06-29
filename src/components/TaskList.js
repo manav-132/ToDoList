@@ -1,27 +1,28 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteTask, editTask, toggleTask } from '../redux/action';
-import { List, ListItem, ListItemText, IconButton, ListItemSecondaryAction, Card, CardContent, Box, Typography } from '@mui/material';
+import { List, ListItem, ListItemText, IconButton, ListItemSecondaryAction, Card, CardContent, Typography } from '@mui/material';
 import { Delete, Edit, CheckCircle, RadioButtonUnchecked } from '@mui/icons-material';
 import './TaskList.css';
 
+// Component for displaying the list of tasks
 const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks);
-  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks); // Get tasks from Redux store
+  const dispatch = useDispatch(); // Redux dispatch function
 
   const handleDelete = (taskId) => {
-    dispatch(deleteTask(taskId));
+    dispatch(deleteTask(taskId)); // Dispatch action to delete the task
   };
 
   const handleEdit = (taskId) => {
-    const newText = prompt("Edit Task:");
+    const newText = prompt("Edit Task:"); // Prompt for new task text
     if (newText !== null && newText.trim() !== "") {
-      dispatch(editTask(taskId, { text: newText }));
+      dispatch(editTask(taskId, { text: newText })); // Dispatch action to edit the task
     }
   };
 
   const handleToggle = (taskId) => {
-    dispatch(toggleTask(taskId));
+    dispatch(toggleTask(taskId)); // Dispatch action to toggle the task's completed state
   };
 
   return (
