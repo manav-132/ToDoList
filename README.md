@@ -74,11 +74,14 @@ To build the application for production, run:
 
 ```bash
 npm run build
-
+```
 ### ScreenShots
 ![image](https://github.com/manav-132/ToDoList/assets/103658463/bfe58555-7880-469d-90dd-8a7afc4554dd)
+
 ![image](https://github.com/manav-132/ToDoList/assets/103658463/b8fdc16a-2078-48e8-a35e-db5ba4d94291)
+
 ![image](https://github.com/manav-132/ToDoList/assets/103658463/f1a689aa-86ab-4763-a725-55ecae328158)
+
 ![image](https://github.com/manav-132/ToDoList/assets/103658463/57eb2dfb-43ab-4226-9296-a6dc14c91cd6)
 
 
