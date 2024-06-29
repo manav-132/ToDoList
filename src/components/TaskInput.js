@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/action';
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Button} from '@mui/material';
 
 const TaskInput = () => {
   const [task, setTask] = useState('');
