@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/action';
-import { TextField, Button} from '@mui/material';
+import { TextField, Button } from '@mui/material';
 
+// Component for adding a new task
 const TaskInput = () => {
-  const [task, setTask] = useState('');
-  const dispatch = useDispatch();
+  const [task, setTask] = useState(''); // State to hold the task input value
+  const dispatch = useDispatch(); // Redux dispatch function
 
   const handleAddTask = () => {
     if (task.trim()) {
+      // Dispatch action to add the task to the store
       dispatch(addTask({ id: Date.now(), text: task, completed: false }));
-      setTask('');
+      setTask(''); // Clear the input field
     }
   };
 
